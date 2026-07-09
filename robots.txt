@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jesseanaya217-ux.github.io/dmv-practice-2026/sitemap.xml
