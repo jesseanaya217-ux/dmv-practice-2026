@@ -263,13 +263,41 @@
   .btn-sign.alt2:hover{background:#12467e; color:#fff}
   .btn-sign.alt3{background:#E87722; color:#fff}
   .btn-sign.alt3:hover{background:#c9631a; color:#fff}
-  .custombar{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:18px; padding:14px 16px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.4); border-radius:10px}
-  .custom-label{font-family:var(--display); font-weight:700; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#fff}
-  .custom-field{display:inline-flex; align-items:center; gap:7px; font-family:var(--display); font-weight:600; font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:#fff}
-  .custom-field input, .custom-field select{font-family:var(--body); font-weight:600; font-size:14px; text-transform:none; letter-spacing:0; padding:7px 9px; border-radius:7px; border:2px solid rgba(255,255,255,.55); background:#fff; color:#1B1D20}
-  .custom-field input{width:66px}
-  .btn-custom{background:#1B1D20; color:#fff; border:none; border-radius:8px; font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.1em; text-transform:uppercase; padding:9px 20px}
-  .btn-custom:hover{background:#000}
+  .hero-sub{margin:16px 0 0; color:#fff; font-size:15px; line-height:1.55; max-width:52ch; opacity:.96}
+
+  .modes{display:flex; flex-direction:column; gap:12px; margin-top:20px}
+  .mode-card{display:flex; align-items:center; gap:16px 20px; flex-wrap:wrap; background:var(--surface); border:1px solid var(--line); border-left:6px solid var(--line); border-radius:12px; padding:16px 18px}
+  .mode-info{flex:1 1 240px; min-width:0}
+  .mode-name{display:block; font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:.02em}
+  .mode-badge{display:block; font-family:var(--display); font-weight:600; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:3px; font-variant-numeric:tabular-nums}
+  .mode-desc{font-size:14px; line-height:1.5; color:var(--muted); margin:9px 0 0}
+  .mode-go{flex:none; background:var(--ink); color:#fff; border:none; border-radius:9px; font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:.1em; text-transform:uppercase; padding:12px 32px}
+  .mode-card.exam{border-left-color:var(--green-bright)}
+  .mode-card.exam .mode-go{background:var(--green-bright)}
+  .mode-card.exam .mode-go:hover{background:var(--green)}
+  .mode-card.signs{border-left-color:#1d5fb3}
+  .mode-card.signs .mode-go{background:#1d5fb3}
+  .mode-card.signs .mode-go:hover{background:#12467e}
+  .mode-card.rules{border-left-color:#E87722}
+  .mode-card.rules .mode-go{background:#E87722}
+  .mode-card.rules .mode-go:hover{background:#c9631a}
+
+  .custom-section{margin-top:22px; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px}
+  .custom-head h3{font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:.14em; text-transform:uppercase; margin:0}
+  .custom-head p{font-size:13.5px; color:var(--muted); margin:5px 0 14px}
+  .custombar{display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px 16px}
+  .custom-field{display:inline-flex; flex-direction:column; gap:5px; font-family:var(--display); font-weight:600; font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+  .custom-field input, .custom-field select{font-family:var(--body); font-weight:600; font-size:15px; text-transform:none; letter-spacing:0; padding:9px 11px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink)}
+  .custom-field input{width:90px}
+  .btn-custom{background:var(--ink); color:var(--bg); border:none; border-radius:9px; font-family:var(--display); font-weight:700; font-size:15px; letter-spacing:.1em; text-transform:uppercase; padding:11px 26px}
+  .btn-custom:hover{opacity:.85}
+  @media (max-width:480px){
+    .mode-card{padding:15px 15px}
+    .mode-go{flex:1 1 100%; padding:13px 0}
+    .custom-field{flex:1 1 100%}
+    .custom-field input{width:100%}
+    .btn-custom{flex:1 1 100%}
+  }
 
   .history{margin-top:30px}
   .history-head{display:flex; justify-content:space-between; align-items:center; gap:12px; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:14px}
@@ -1146,14 +1174,13 @@ QUESTIONS.forEach(function(q, i){
   else if (q.concept) CONCEPT_IDX.push(i);
   else RULE_IDX.push(i);
 });
-var EXAM_SIGN_COUNT = 14;
+var EXAM_SIGN_COUNT = 10;
 var RANDOM_COUNT = 30;
 var ALL_IDX = SIGN_IDX.concat(RULE_IDX, CONCEPT_IDX);
 var MODES = {
   exam:   { label: 'Full Exam' },
-  teen:   { label: 'Under 18' },
   signs:  { label: 'Signs Only' },
-  random: { label: 'Randomized' },
+  rules:  { label: 'Concepts & Rules' },
   custom: { label: 'Custom' }
 };
 function pick(arr, n){ return shuffle(arr.slice()).slice(0, n); }
@@ -1281,22 +1308,33 @@ function showStart(){
       '<span class="exit-tab">Exit 36</span>' +
       '<div class="kicker">2026 Practice Run</div>' +
       '<h1>California Driver Knowledge Test</h1>' +
-      '<ul class="rules">' +
-        '<li>Full Exam: 36 questions — pass with 30 (adult test)</li>' +
-        '<li>Under 18: 46 questions — pass with 38 (teen permit test)</li>' +
-        '<li>Signs Only: all ' + SIGN_IDX.length + ' handbook signs</li>' +
-        '<li>Randomized or Custom: build your own mix &amp; length</li>' +
-      '</ul>' +
-      '<div class="startrow">' +
-        '<button class="btn-sign" id="beginBtn">Full Exam</button>' +
-        '<button class="btn-sign alt" id="teenBtn">Under 18</button>' +
-        '<button class="btn-sign alt2" id="signsBtn">Signs Only</button>' +
-        '<button class="btn-sign alt3" id="randomBtn">Randomized</button>' +
+      '<p class="hero-sub">Pick a practice mode below. Every answer includes a handbook explanation, and your scores are saved so you can review or delete them.</p>' +
+    '</section>' +
+    '<section class="modes">' +
+      '<div class="mode-card exam">' +
+        '<div class="mode-info"><span class="mode-name">Full Exam</span>' +
+          '<span class="mode-badge">36 questions &middot; pass 30 &middot; DMV-style mix</span>' +
+          '<p class="mode-desc">The most realistic practice — a DMV-style blend of road signs, traffic laws, and safe-driving judgment, scored exactly like the real Class C knowledge test.</p></div>' +
+        '<button class="mode-go" id="beginBtn">Start</button>' +
       '</div>' +
+      '<div class="mode-card signs">' +
+        '<div class="mode-info"><span class="mode-name">Signs Only</span>' +
+          '<span class="mode-badge">' + SIGN_IDX.length + ' questions &middot; every handbook sign</span>' +
+          '<p class="mode-desc">Drill every road sign in the California Driver\u2019s Handbook — regulatory, warning, construction, guide, railroad, hazmat, and pedestrian signs.</p></div>' +
+        '<button class="mode-go" id="signsBtn">Start</button>' +
+      '</div>' +
+      '<div class="mode-card rules">' +
+        '<div class="mode-info"><span class="mode-name">Concepts &amp; Rules</span>' +
+          '<span class="mode-badge">' + (RULE_IDX.length + CONCEPT_IDX.length) + ' questions &middot; laws &amp; scenarios</span>' +
+          '<p class="mode-desc">Focus on the rules of the road and real-world driving concepts — right-of-way, speed, alcohol, emergencies, and the judgment the DMV checks that you understand.</p></div>' +
+        '<button class="mode-go" id="rulesBtn">Start</button>' +
+      '</div>' +
+    '</section>' +
+    '<section class="custom-section">' +
+      '<div class="custom-head"><h3>Build Your Own</h3><p>Choose how many questions and which topics — a quick warm-up or a deep dive.</p></div>' +
       '<div class="custombar">' +
-        '<span class="custom-label">Build your own</span>' +
         '<label class="custom-field">Questions <input type="number" id="customCount" min="1" max="' + ALL_IDX.length + '" value="20"></label>' +
-        '<label class="custom-field">Topic <select id="customTopic"><option value="all">All topics</option><option value="signs">Signs only</option><option value="rules">Rules &amp; concepts</option></select></label>' +
+        '<label class="custom-field">Topic <select id="customTopic"><option value="all">All topics</option><option value="signs">Signs only</option><option value="rules">Concepts &amp; rules</option></select></label>' +
         '<button class="btn-custom" id="customBtn">Start</button>' +
       '</div>' +
     '</section>' +
@@ -1304,9 +1342,8 @@ function showStart(){
     '<p class="smallprint">Unofficial practice based on the 2026 California Driver’s Handbook. The real Class C knowledge test for adults has 36 questions (30 correct to pass); applicants under 18 get 46 questions (38 to pass). Not affiliated with the California DMV.</p>' +
     '<p class="smallprint kbdtip">Tip: use keys <strong>1 / 2 / 3</strong> to answer and <strong>Enter</strong> for the next question.</p>';
   document.getElementById('beginBtn').addEventListener('click', function(){ startTest('exam'); });
-  document.getElementById('teenBtn').addEventListener('click', function(){ startTest('teen'); });
   document.getElementById('signsBtn').addEventListener('click', function(){ startTest('signs'); });
-  document.getElementById('randomBtn').addEventListener('click', function(){ startTest('random'); });
+  document.getElementById('rulesBtn').addEventListener('click', function(){ startTest('rules'); });
   document.getElementById('customBtn').addEventListener('click', function(){
     var n = parseInt(document.getElementById('customCount').value, 10) || 20;
     var t = document.getElementById('customTopic').value;
@@ -1321,18 +1358,16 @@ function startTest(m, opts){
   currentLabel = MODES[mode].label;
   if (mode === 'signs'){
     order = shuffle(SIGN_IDX.slice());
-  } else if (mode === 'random'){
-    order = pick(ALL_IDX, RANDOM_COUNT);
-  } else if (mode === 'teen'){
-    order = shuffle(pick(SIGN_IDX, 18).concat(RULE_IDX, pick(CONCEPT_IDX, 6)));
+  } else if (mode === 'rules'){
+    order = shuffle(RULE_IDX.concat(CONCEPT_IDX));
   } else if (mode === 'custom'){
     var topic = opts.topic || 'all';
     var poolC = topic === 'signs' ? SIGN_IDX : topic === 'rules' ? RULE_IDX.concat(CONCEPT_IDX) : ALL_IDX;
     var n = Math.max(1, Math.min(opts.count || 25, poolC.length));
     order = pick(poolC, n);
-    currentLabel = 'Custom \u00b7 ' + (topic === 'signs' ? 'Signs' : topic === 'rules' ? 'Rules' : 'Mixed');
+    currentLabel = 'Custom \u00b7 ' + (topic === 'signs' ? 'Signs' : topic === 'rules' ? 'Concepts & Rules' : 'Mixed');
   } else {
-    order = shuffle(pick(SIGN_IDX, EXAM_SIGN_COUNT).concat(RULE_IDX));
+    order = shuffle(pick(SIGN_IDX, EXAM_SIGN_COUNT).concat(pick(RULE_IDX.concat(CONCEPT_IDX), 26)));
   }
   passNeeded = Math.max(1, Math.round(order.length * 30 / 36));
   allowedMisses = order.length - passNeeded;
@@ -1448,7 +1483,10 @@ function showResults(){
       '<h2>' + (passed ? 'Passed' : 'Not Passed') + '</h2>' +
       '<ul class="rules">' +
         '<li>' + (passed
-            ? (mode === 'signs' ? 'You know your signs — sharp eyes out there' : 'You’d have passed the real knowledge test')
+            ? (mode === 'signs' ? 'You know your signs — sharp eyes out there'
+             : mode === 'exam' ? 'You’d have passed the real knowledge test'
+             : mode === 'rules' ? 'Strong on the rules and concepts'
+             : 'Nice work — practice complete')
             : 'You need ' + passNeeded + ' correct — miss no more than ' + allowedMisses) + '</li>' +
       '</ul>' +
       '<div class="startrow"><button class="btn-sign" id="retakeBtn">Retake</button><button class="btn-sign alt" id="menuBtn">Home</button></div>' +
