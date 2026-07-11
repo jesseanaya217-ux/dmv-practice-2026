@@ -326,6 +326,21 @@
     .hist-actions{margin-left:auto}
   }
 
+  .sg-wrap{padding-top:0}
+  .studyguide{margin-top:46px; padding-top:30px; border-top:2px solid var(--line)}
+  .studyguide .sg-title{font-family:var(--display); font-weight:700; font-size:24px; letter-spacing:.01em; margin:0 0 12px; text-wrap:balance}
+  .studyguide h2{font-family:var(--display); font-weight:700; font-size:19px; letter-spacing:.02em; margin:26px 0 8px; text-wrap:balance}
+  .studyguide h3{font-family:var(--display); font-weight:700; font-size:15.5px; margin:14px 0 3px; color:var(--ink)}
+  .studyguide p{font-size:14.5px; line-height:1.6; color:var(--muted); margin:0 0 10px}
+  .studyguide strong{color:var(--ink)}
+  .sg-facts{margin:10px 0 0}
+  .sg-facts dt{font-family:var(--display); font-weight:700; font-size:14px; color:var(--ink); margin-top:11px}
+  .sg-facts dd{margin:2px 0 0; font-size:14px; line-height:1.5; color:var(--muted)}
+  .sg-list{margin:6px 0 10px; padding-left:20px}
+  .sg-list li{font-size:14.5px; line-height:1.6; color:var(--muted); margin-bottom:4px}
+  .sg-source{font-size:13px; margin-top:22px}
+  .studyguide a{color:var(--green-bright); text-decoration:underline}
+
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{transition:none !important; animation:none !important}
   }
@@ -346,6 +361,72 @@
   </div>
   <main id="app"></main>
 </div>
+
+<div class="wrap sg-wrap">
+  <section class="studyguide" aria-label="California DMV test study guide and FAQ">
+    <h1 class="sg-title">Free California DMV Practice Test 2026</h1>
+    <p>This free practice test helps you prepare for the California DMV Class C driver license knowledge exam and road-sign test. The questions and explanations are based on the official 2026 California Driver’s Handbook (DL 600). Take the <strong>Full Exam</strong> for a realistic 36-question test, use <strong>Signs Only</strong> to study all 57 road signs, or choose <strong>Concepts &amp; Rules</strong> to focus on traffic laws and safe-driving scenarios. Your scores are saved so you can track progress, and it works on any phone.</p>
+
+    <h2>How the California knowledge test works</h2>
+    <p>The real California DMV knowledge test has <strong>36 questions for adults (18 and over)</strong>, and you must answer <strong>30 correctly — about 83% — to pass</strong>. Applicants <strong>under 18</strong> take a longer <strong>46-question</strong> test and need <strong>38 correct</strong>. You get three attempts per application. The test covers road signs, traffic signals, right-of-way, speed limits, parking, sharing the road, alcohol and drug laws, and safe-driving practices.</p>
+
+    <h2>California DMV quick facts to memorize</h2>
+    <dl class="sg-facts">
+      <dt>Speed limit — business or residential district</dt><dd>25 mph unless posted otherwise.</dd>
+      <dt>Speed limit — blind intersection or alley</dt><dd>15 mph.</dd>
+      <dt>Speed limit — within 100 ft of a railroad crossing without a clear view</dt><dd>15 mph.</dd>
+      <dt>Blood alcohol limit (BAC)</dt><dd>0.08% at 21 and over, 0.01% under 21, 0.04% commercial.</dd>
+      <dt>Following distance</dt><dd>At least 3 seconds behind the car ahead — more in rain or fog.</dd>
+      <dt>Turn signal</dt><dd>Signal the last 100 feet before turning, and 5 seconds before a freeway lane change.</dd>
+      <dt>Headlights</dt><dd>On from 30 minutes after sunset to 30 minutes before sunrise, and whenever your wipers are on.</dd>
+      <dt>High beams</dt><dd>Dim within 500 feet of an oncoming vehicle and 300 feet when following one.</dd>
+      <dt>Passing a bicyclist</dt><dd>Give at least 3 feet of clearance.</dd>
+      <dt>Parallel parking</dt><dd>Park within 18 inches of the curb.</dd>
+      <dt>Curb colors</dt><dd>Red = no stopping; White = quick passenger or mail stop; Green = limited time; Yellow = loading; Blue = disabled parking.</dd>
+      <dt>Daylighting law</dt><dd>No parking within 20 feet of a crosswalk.</dd>
+    </dl>
+
+    <h2>California road signs: shapes and colors</h2>
+    <p>You can identify many road signs by their shape and color alone:</p>
+    <ul class="sg-list">
+      <li><strong>Octagon, red</strong> — STOP.</li>
+      <li><strong>Triangle pointing down, red and white</strong> — YIELD.</li>
+      <li><strong>Pentagon, yellow-green</strong> — school zone or school crossing.</li>
+      <li><strong>Round, yellow</strong> — railroad crossing ahead.</li>
+      <li><strong>Diamond, yellow</strong> — warns of road conditions ahead such as curves, merges, or pedestrians.</li>
+      <li><strong>Diamond, orange</strong> — construction or work zone.</li>
+      <li><strong>Rectangle, white</strong> — regulatory laws you must obey, such as speed limits and one-way streets.</li>
+      <li><strong>Rectangle, green, blue, or brown</strong> — guide signs for directions, services, and recreation areas.</li>
+    </ul>
+    <p>The <strong>Signs Only</strong> practice drills all 57 signs from the handbook so you can recognize each one on sight.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="sg-faq">
+      <h3>Is this California DMV practice test free?</h3>
+      <p>Yes. It is completely free with no sign-up required, and it works on phones, tablets, and computers.</p>
+      <h3>How many questions are on the California DMV test?</h3>
+      <p>Adults 18 and over take 36 questions and need 30 correct to pass. Drivers under 18 take 46 questions and need 38 correct.</p>
+      <h3>Is this practice test updated for 2026?</h3>
+      <p>Yes. The questions and explanations follow the 2026 California Driver’s Handbook, including newer laws such as the 20-foot “daylighting” crosswalk parking rule.</p>
+      <h3>Does it include real California road signs?</h3>
+      <p>Yes — all 57 road signs are taken directly from the official California Driver’s Handbook.</p>
+      <h3>How many times can I take the real knowledge test?</h3>
+      <p>You get three attempts per application. If you do not pass, you must wait until the next day to try again.</p>
+    </div>
+
+    <p class="sg-source">Always confirm the rules with the official <a href="https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/" rel="noopener" target="_blank">California Driver’s Handbook</a> at dmv.ca.gov. This site is a free study aid and is not affiliated with the California DMV.</p>
+  </section>
+</div>
+
+<script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Is this California DMV practice test free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is completely free with no sign-up required, and it works on phones, tablets, and computers."}},
+    {"@type":"Question","name":"How many questions are on the California DMV test?","acceptedAnswer":{"@type":"Answer","text":"Adults 18 and over take 36 questions and need 30 correct to pass. Drivers under 18 take 46 questions and need 38 correct."}},
+    {"@type":"Question","name":"Is this practice test updated for 2026?","acceptedAnswer":{"@type":"Answer","text":"Yes. The questions and explanations follow the 2026 California Driver's Handbook, including newer laws such as the 20-foot daylighting crosswalk parking rule."}},
+    {"@type":"Question","name":"Does it include real California road signs?","acceptedAnswer":{"@type":"Answer","text":"Yes. All 57 road signs are taken directly from the official California Driver's Handbook."}},
+    {"@type":"Question","name":"How many times can I take the real knowledge test?","acceptedAnswer":{"@type":"Answer","text":"You get three attempts per application. If you do not pass, you must wait until the next day to try again."}}
+  ]}
+  </script>
 
 <script>
 (function(){
